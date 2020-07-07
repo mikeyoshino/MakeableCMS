@@ -1,0 +1,75 @@
+﻿@model IEnumerable<MakeableCMS.Models.Category>
+
+@{
+    ViewBag.Title = "Function";
+}
+<div class="header-create" style="width: 100%; height: 165px; background-color: #ccffef;">
+    <div class="title" style="padding-top: 50px; padding-left: 20px;"><h2>Function List</h2></div>
+</div>
+
+<div style="padding-top: 40px;">
+
+    <h6>Each app function is connected to the Area it is related to using the drop down. A good description of how the function can help assist with the area should be provided</h6>
+    <br/>
+    <p>
+        @Html.ActionLink("Add Function", "Create", "", new { @class = "btn btn-primary" })
+    </p>
+
+
+    <table id="categories" class="table table-hover table-bordered" style="width:100%">
+        <thead class="table-dark">
+            <tr>
+                <th style="width: 50px;">@Html.DisplayNameFor(model => model.Id)</th>
+                <th style="width: 60px"></th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th style="width: 120px;">@Html.DisplayNameFor(model => model.Area.AreaName)</th>
+                <th style="width: 180px" ;></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td><img src="@Url.Content(item.ImagePath)" width="60" height="60" class="img-thumbnail" /></td>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Area.AreaName)</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-secondary" })
+                        <a data-categories-id="@item.Id" class="btn btn-danger btn-secondary js-delete">Delete</a>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+
+    @section scripts
+{
+        <script>
+            $(document).ready(function () {
+                $("#categories").dataTable();
+                $("#categories").on("click", ".js-delete",
+                    function () {
+                        var button = $(this);
+                        bootbox.confirm("Are sure to delete record?",
+                            function (result) {
+                                if (result) {
+                                    $.ajax({
+                                        url: "Api/Category/" + button.attr("data-categories-id"),
+                                        method: "DELETE",
+                                        success: function () {
+                                            button.parents("tr").remove();
+                                        }
+                                    });
+                                }
+                            });
+
+                    });
+            });
+
+        </script>
+    }

@@ -1,0 +1,87 @@
+﻿@model MakeableCMS.Models.Application
+
+
+
+<div>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel"></h4>
+    </div>
+
+
+    <hr />
+    <dl class="dl-horizontal">
+        <div style="padding: 20px">
+            <div class="container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt>
+                    Application Operation System
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AppOs.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Category.Name)
+                </dd>
+
+                <dd>
+                    <img src="@Url.Content(Model.ImagePath)" width="100" height="100" class="img-thumbnail" />
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AppStoreRating)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AppStoreRating)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PostDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PostDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.UserfulRate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UserfulRate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AppUrl)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AppUrl)
+                </dd>
+            </div>
+    </dl>
+</div>
+

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MakeableCMS.Models.Article>
+
+@{
+    ViewBag.Title = "Article";
+}
+<div class="header-create" style="width: 100%; height: 165px; background-color: #ffccde;">
+    <div class="title" style="padding-top: 50px; padding-left: 20px;"><h2>Article List</h2></div>
+</div>
+
+<div style="padding-top: 40px;">
+    <h5>Add a new article by clicking "Add Article" button located below.</h5>
+    <h6>Controller are located at the end of collumn. You can edit and delete by clicking at these buttons.</h6>
+    <br />
+
+    <table id="articles" class="table table-hover table-bordered" style="width:100%">
+        <thead class="table-dark">
+            <tr>
+                <th style="width: 30px;">@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th style="width: 180px;">@Html.DisplayNameFor(model => model.Area.AreaName)</th>
+                <th style="width: 110px;">@Html.DisplayNameFor(model => model.DateTime)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Area.AreaName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DateTime)</td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+</div>
+

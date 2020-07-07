@@ -1,0 +1,68 @@
+﻿@model MakeableCMS.ViewModel.CategoryViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="header-create" style="width: 100%; height: 165px; background-color: #ccffef; margin-bottom: 20px;">
+    <div class="title" style="padding-top: 50px; padding-left: 20px;"><h2>Create Function</h2></div>
+</div>
+
+<form method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Function</h4>
+        <h5>Each app function is connected to the Area it is related to using the drop down.<br /> A good description of how the function can help assist with the area should be provided.</h5>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Category.ImagePath, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" name="ImageFile" class="custom-file-input" id="inputGroupFile01"
+                               aria-describedby="inputGroupFileAddon01" required="">
+                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Category.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Category.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Category.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Category.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Category.Description, new { @class = "form-control", @rows = 5 })
+                @Html.ValidationMessageFor(model => model.Category.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Category.AreaId, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Category.AreaId, new SelectList(Model.Areas, "Id", "AreaName"), "Select Area..", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Category.AreaId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+</form>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-secondary" })
+    </div>

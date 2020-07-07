@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Makeable, help is our thing.</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+</head>
+<body>
+    <div id="app">
+        <aside class="main-sidebar fixed offcanvas shadow">
+            <section class="sidebar">
+                    <img src="https://i.imgur.com/93lnW9g.png" alt="">
+                <div class="relative">
+                    <div class="user-panel p-3 light mb-2">
+     
+                            <div class="float-left image">
+                                @Html.ActionLink("Makeable CMS", "Index", "Category", new { area = "" }, new { @class = "navbar-brand" })
+                                @Html.Partial("_LoginPartial")
+                            </div>
+ 
+ 
+                        <div class="clearfix"></div>
+                        <div class="collapse multi-collapse" id="userSettingsCollapse">
+                            <div class="list-group mt-3 shadow">
+                                <a href="index.html" class="list-group-item list-group-item-action ">
+                                    <i class="mr-2 icon-umbrella text-blue"></i>Profile
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <i class="mr-2 icon-cogs text-yellow"></i>Settings
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <i class="mr-2 icon-security text-purple"></i>Change Password
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="sidebar-menu">
+                    <li class="header" style="background-color: #383838"><strong style="color: #f9f9f9">MAIN NAVIGATION</strong></li>
+                    <li class="treeview">
+                    <li>
+                        @Html.ActionLink("Area", "Index", "Areas", null, new { @class = "nav-link" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Function", "Index", "Categories", null, new { @class = "nav-link" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Application OS", "Index", "AppOs", null, new { @class = "nav-link" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Application", "Index", "Application", null, new { @class = "nav-link" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Article", "Index", "Article", null, new { @class = "nav-link" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Api Documents", "Index", "Home", null, new { @class = "nav-link" })
+                    </li>
+                </ul>
+            </section>
+        </aside>
+        <!--Sidebar End-->
+
+        <div class="page has-sidebar-left height-full">
+
+            <div class="container-fluid relative animatedParent animateOnce">
+                @RenderBody()
+            </div>
+        </div>
+
+    </div>
+
+
+
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+
+
+    @Scripts.Render("~/bundles/lib")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
